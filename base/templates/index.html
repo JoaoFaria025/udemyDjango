@@ -1,0 +1,52 @@
+{%load bootstrap4%}
+<!doctype html>
+<html lang=pt-br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% bootstrap_css %}
+   </head>
+<body>
+    <div class="container mb-5 mt-5 text-center">
+        <h1>Página Inicial</h1>
+    </div>
+    <div class="container mb-5 mt-5 text-center">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for cliente in cliente%}
+                <tr>
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.nome}}</td>
+                    <td>{{cliente.sobrenome}}</td>
+                    <td>{{cliente.email}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container mt-5 bg-dark text-white p-5">
+        {% bootstrap_messages %}
+        <form action="" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+
+</html>
